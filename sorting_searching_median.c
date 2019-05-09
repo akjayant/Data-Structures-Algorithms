@@ -222,6 +222,9 @@ void merge(int a[],int low,int mid,int high)
 			ptr_left++;
 			i++;
 			}
+	
+	free(aux_left);
+	free(aux_right);
 			
    }
 
@@ -243,56 +246,61 @@ void mergesort(int a[],int low,int high)
 int main()
 {
 	struct dyn_arr *d = malloc(sizeof(struct dyn_arr));
-	printf("Enter size of array\n");
-	scanf("%d",&d->capacity);
-	d->arr=(int *)malloc(d->capacity*sizeof(int));
-	printf("Enter array elements\n");
-	int i=0;
-	for(i=0;i<d->capacity;i++)
-	scanf("%d",&d->arr[i]);
+	if (d==0)
+		printf("out of memory");
+	else
+	{
+		printf("Enter size of array\n");
+		scanf("%d",&d->capacity);
+		d->arr=(int *)malloc(d->capacity*sizeof(int));
+		printf("Enter array elements\n");
+		int i=0;
+		for(i=0;i<d->capacity;i++)
+		scanf("%d",&d->arr[i]);
 
 
 
-	/* Interesting point to be noted - 
-	I am passing size of array as well because sizeof(array)/sizeof(int) may produce 
-	wrong result because malloc is very kind hearted function it allocates a bit more 
-	than you want (or whatever value you passed as arg)!!*/
+		/* Interesting point to be noted - 
+		I am passing size of array as well because sizeof(array)/sizeof(int) may produce 
+		wrong result because malloc is very kind hearted function it allocates a bit more 
+		than you want (or whatever value you passed as arg)!!*/
 
-	display(d->arr,d->capacity);   
-	shuffle(d->arr,d->capacity);
-	printf("\nshuffled array\n");					  
-	display(d->arr,d->capacity);
+		display(d->arr,d->capacity);   
+		shuffle(d->arr,d->capacity);
+		printf("\nshuffled array\n");					  
+		display(d->arr,d->capacity);
 
-	//Sorting drivers
+		//Sorting drivers
 
-	shuffle(d->arr,d->capacity);
-	bubblesort(d->arr,d->capacity);
-	printf("\nbubble sort result\n");
-	display(d->arr,d->capacity);
+		shuffle(d->arr,d->capacity);
+		bubblesort(d->arr,d->capacity);
+		printf("\nbubble sort result\n");
+		display(d->arr,d->capacity);
 
-	shuffle(d->arr,d->capacity);
-	selectionsort(d->arr,d->capacity);
-	printf("\nselection sort result\n");
-	display(d->arr,d->capacity);
+		shuffle(d->arr,d->capacity);
+		selectionsort(d->arr,d->capacity);
+		printf("\nselection sort result\n");
+		display(d->arr,d->capacity);
 
-	shuffle(d->arr,d->capacity);
-	insertionsort(d->arr,d->capacity);
-	printf("\ninsertion sort result\n");
-	display(d->arr,d->capacity);
-
-
-	shuffle(d->arr,d->capacity);
-	quicksort(d->arr,0,d->capacity-1);
-	printf("\nquick sort result\n");
-	display(d->arr,d->capacity);
+		shuffle(d->arr,d->capacity);
+		insertionsort(d->arr,d->capacity);
+		printf("\ninsertion sort result\n");
+		display(d->arr,d->capacity);
 
 
+		shuffle(d->arr,d->capacity);
+		quicksort(d->arr,0,d->capacity-1);
+		printf("\nquick sort result\n");
+		display(d->arr,d->capacity);
 
-	shuffle(d->arr,d->capacity);
-	mergesort(d->arr,0,d->capacity-1);
-	printf("\nmerge sort result\n");
-	display(d->arr,d->capacity);
 
 
+		shuffle(d->arr,d->capacity);
+		mergesort(d->arr,0,d->capacity-1);
+		printf("\nmerge sort result\n");
+		display(d->arr,d->capacity);
+	}
+	free(d);
+	
 	return 0;
 }
