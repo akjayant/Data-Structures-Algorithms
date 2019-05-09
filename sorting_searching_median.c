@@ -1,4 +1,12 @@
-//---------Let's cuddle with integer arrays make our way to sorting them (in O(nlogn)), searching them (in O(logn)), finding median (in O(n))//--------------------------
+/*---------------PRACTICING INTEGER ARRAYS---------------*/
+
+/*
+Let's cuddle with integer arrays make our way to  - 
+1)sorting them (in O(nlogn))
+2)searching them (in O(logn))
+3)finding median (in O(n))*/
+
+
 #include<stdlib.h>
 #include<stdio.h>
 
@@ -117,7 +125,6 @@ Worst Case : (Unbalanced partition having 1 element in first half and n-1 in oth
 Average Case: O(nlogn)
 Not stable by default
 Worst case Space Complexity : O(n) (stack space for recursive calls) + no aux space req_d
-
 */
 
 int partition(int a[],int low,int high)
@@ -232,64 +239,60 @@ void mergesort(int a[],int low,int high)
 }	
 	
 	
-	
-
-
-
-
+/*---------BORING but IMPORTANT main()------------------*/	
 int main()
 {
-struct dyn_arr *d = malloc(sizeof(struct dyn_arr));
-printf("Enter size of array\n");
-scanf("%d",&d->capacity);
-d->arr=(int *)malloc(d->capacity*sizeof(int));
-printf("Enter array elements\n");
-int i=0;
-for(i=0;i<d->capacity;i++)
-scanf("%d",&d->arr[i]);
+	struct dyn_arr *d = malloc(sizeof(struct dyn_arr));
+	printf("Enter size of array\n");
+	scanf("%d",&d->capacity);
+	d->arr=(int *)malloc(d->capacity*sizeof(int));
+	printf("Enter array elements\n");
+	int i=0;
+	for(i=0;i<d->capacity;i++)
+	scanf("%d",&d->arr[i]);
 
 
 
-/* Interesting point to be noted - 
-I am passing size of array as well because sizeof(array)/sizeof(int) may produce 
-wrong result because malloc is very kind hearted function it allocates a bit more than you want (or whatever value you passed as arg)!!*/
-												  
-display(d->arr,d->capacity);   
-                   
-shuffle(d->arr,d->capacity);
-printf("\nshuffled array\n");					  
-display(d->arr,d->capacity);
+	/* Interesting point to be noted - 
+	I am passing size of array as well because sizeof(array)/sizeof(int) may produce 
+	wrong result because malloc is very kind hearted function it allocates a bit more 
+	than you want (or whatever value you passed as arg)!!*/
 
-//Sorting drivers
+	display(d->arr,d->capacity);   
+	shuffle(d->arr,d->capacity);
+	printf("\nshuffled array\n");					  
+	display(d->arr,d->capacity);
 
-shuffle(d->arr,d->capacity);
-bubblesort(d->arr,d->capacity);
-printf("\nbubble sort result\n");
-display(d->arr,d->capacity);
+	//Sorting drivers
 
-shuffle(d->arr,d->capacity);
-selectionsort(d->arr,d->capacity);
-printf("\nselection sort result\n");
-display(d->arr,d->capacity);
+	shuffle(d->arr,d->capacity);
+	bubblesort(d->arr,d->capacity);
+	printf("\nbubble sort result\n");
+	display(d->arr,d->capacity);
 
-shuffle(d->arr,d->capacity);
-insertionsort(d->arr,d->capacity);
-printf("\ninsertion sort result\n");
-display(d->arr,d->capacity);
+	shuffle(d->arr,d->capacity);
+	selectionsort(d->arr,d->capacity);
+	printf("\nselection sort result\n");
+	display(d->arr,d->capacity);
 
-
-shuffle(d->arr,d->capacity);
-quicksort(d->arr,0,d->capacity-1);
-printf("\nquick sort result\n");
-display(d->arr,d->capacity);
+	shuffle(d->arr,d->capacity);
+	insertionsort(d->arr,d->capacity);
+	printf("\ninsertion sort result\n");
+	display(d->arr,d->capacity);
 
 
+	shuffle(d->arr,d->capacity);
+	quicksort(d->arr,0,d->capacity-1);
+	printf("\nquick sort result\n");
+	display(d->arr,d->capacity);
 
-shuffle(d->arr,d->capacity);
-mergesort(d->arr,0,d->capacity-1);
-printf("\nmerge sort result\n");
-display(d->arr,d->capacity);
 
-												  
-return 0;
+
+	shuffle(d->arr,d->capacity);
+	mergesort(d->arr,0,d->capacity-1);
+	printf("\nmerge sort result\n");
+	display(d->arr,d->capacity);
+
+
+	return 0;
 }
